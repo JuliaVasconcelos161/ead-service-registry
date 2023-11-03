@@ -5,7 +5,14 @@ spring:
   application:
     name: ead-service-registry
 
+ead:
+  serviceRegistry:
+    username: "${ead-service-registry-username}"
+    password: "${ead-service-registry-password}"
+
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
+    service-url:
+      default-zone: 'http://${ead.serviceRegistry.username}:${ead.serviceRegistry.password}@localhost:8761/eureka'
